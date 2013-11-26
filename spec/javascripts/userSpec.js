@@ -5,6 +5,8 @@ describe("The User Model", function() {
     user = new app.models.User({
       firstName: "Dan",
       lastName: "Garland",
+      bio: "A short story...",
+      mission: "A short mission..."
     });
   });
 
@@ -44,43 +46,68 @@ describe("The User Model", function() {
       expect(new_user.get("lastName")).toBe("Garland");
     });
   });
-});
 
-describe("fullName", function() {
-  var user;
-  beforeEach(function() {
-    user = new app.models.User();
+  describe("fullName", function() {
+    var user;
+    beforeEach(function() {
+      user = new app.models.User();
+    });
+
+    describe("firstName only", function() {
+      beforeEach(function() {
+        user.set("firstName", "Dan");
+      });
+
+      it("should set only the firstName", function() {
+        expect(user.get("fullName")).toBe("Dan");
+      });
+
+    });
+    describe("lastName only", function() {
+      beforeEach(function() {
+        user.set("lastName", "Garland");
+      });
+
+      it("should set only the lastName", function() {
+        expect(user.get("fullName")).toBe("Garland");
+      });
+
+    });
+    describe("both firstName and lastName", function() {
+      beforeEach(function() {
+        user.set("firstName", "Dan");
+        user.set("lastName", "Garland");
+      });
+
+      it("should set both names", function() {
+        expect(user.get("fullName")).toBe("Dan Garland");
+      });
+    });
   });
 
-  describe("firstName only", function() {
-    beforeEach(function() {
-      user.set("firstName", "Dan");
+  describe("validation", function() {
+    it("should be invalid without firstName", function() {
+      user.set("firstName", undefined);
+      expect(user.isValid()).toBeFalsy();
+      expect(user.validationError.message).toEqual("First Name must be defined.");
     });
 
-    it("should set only the firstName", function() {
-      expect(user.get("fullName")).toBe("Dan");
+    it("should be invalid without lastName", function() {
+      user.set("lastName", undefined);
+      expect(user.isValid()).toBeFalsy();
+      expect(user.validationError.message).toEqual("Last Name must be defined.");
     });
 
-  });
-  describe("lastName only", function() {
-    beforeEach(function() {
-      user.set("lastName", "Garland");
+    it("should be invalid without bio", function() {
+      user.set("bio", undefined);
+      expect(user.isValid()).toBeFalsy();
+      expect(user.validationError.message).toEqual("Bio must be defined.");
     });
 
-    it("should set only the lastName", function() {
-      expect(user.get("fullName")).toBe("Garland");
+    it("should be invalid without mission", function() {
+      user.set("mission", undefined);
+      expect(user.isValid()).toBeFalsy();
+      expect(user.validationError.message).toEqual("Mission must be defined.");
     });
-
-  });
-  describe("both firstName and lastName", function() {
-    beforeEach(function() {
-      user.set("firstName", "Dan");
-      user.set("lastName", "Garland");
-    });
-
-    it("should set both names", function() {
-      expect(user.get("fullName")).toBe("Dan Garland");
-    });
-
   });
 });

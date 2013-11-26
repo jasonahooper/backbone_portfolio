@@ -45,3 +45,42 @@ describe("The User Model", function() {
     });
   });
 });
+
+describe("fullName", function() {
+  var user;
+  beforeEach(function() {
+    user = new app.models.User();
+  });
+
+  describe("firstName only", function() {
+    beforeEach(function() {
+      user.set("firstName", "Dan");
+    });
+
+    it("should set only the firstName", function() {
+      expect(user.get("fullName")).toBe("Dan");
+    });
+
+  });
+  describe("lastName only", function() {
+    beforeEach(function() {
+      user.set("lastName", "Garland");
+    });
+
+    it("should set only the lastName", function() {
+      expect(user.get("fullName")).toBe("Garland");
+    });
+
+  });
+  describe("both firstName and lastName", function() {
+    beforeEach(function() {
+      user.set("firstName", "Dan");
+      user.set("lastName", "Garland");
+    });
+
+    it("should set both names", function() {
+      expect(user.get("fullName")).toBe("Dan Garland");
+    });
+
+  });
+});

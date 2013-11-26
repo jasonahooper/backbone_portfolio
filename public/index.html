@@ -14,21 +14,25 @@
 
   <section id="content">
 
-    <div id="bio">
-      <img src="uploads/me.jpg" width="200" height="200" alt="Dan Garland"
-      class="bio-image shadowed" />
+    <script type="text/template" id='user-template'>
+      <div id="bio">
+        <img src="uploads/me.jpg" width="200" height="200" alt=<%= user.fullName %>
+        class="bio-image shadowed" />
 
-      <div class="bio-text">
-        <h1 class="name">Dan Garland</h1>
+        <div class="bio-text">
+          <h1 class="name"><%= user.fullName %></h1>
 
-        <h2 class="bio">
-          Freelance Ruby on Rails developer from London, UK
-        </h2>
+          <h2 class="bio">
+            <%= user.bio %>
+          </h2>
 
-        <h3 class="mission">
-          Expressing creativity through innovative web development
-        </h3>
+          <h3 class="mission">
+            <%= user.mission %>
+          </h3>
+        </div>
       </div>
+    </script>
+    <div id='user-profile'>
     </div>
 
     <div id="projects">
@@ -118,8 +122,10 @@
   <script src="../app/assets/javascripts/backbone.localStorage-min.js"></script>
   <script src="../app/assets/javascripts/boot.js"></script>
   <script src="../app/assets/javascripts/models/project.js"></script>
+  <script src="../app/assets/javascripts/models/user.js"></script>
   <script src="../app/assets/javascripts/collections/project_list.js"></script>
   <script src="../app/assets/javascripts/views/project_view.js"></script>
+  <script src="../app/assets/javascripts/views/user_view.js"></script>
   <script src="../app/assets/javascripts/app.js"></script>
 </body>
 

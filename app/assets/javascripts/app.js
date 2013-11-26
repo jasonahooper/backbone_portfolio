@@ -24,7 +24,17 @@ $(document).ready(function() {
     $('#project-list').append(view.render().el);
   });
 
-  // Create a view for the first Project and render it
-  // var view = new app.views.ProjectView({ model: projectList.first() });
-  // $('#project-list').append(view.render().el);
+  var me = new app.models.User({
+    firstName: "Jason",
+    lastName: "Hooper",
+    bio: "Junior Ruby on Rails Developer from Cardiff, Wales.",
+    mission: "To find a position where my skills are appreciated and I may continue developing."
+  });
+  me.setFullName();
+
+  var userView = new app.views.UserView({
+    model: me
+  });
+
+  $('#user-profile').html(userView.render().el);
 });

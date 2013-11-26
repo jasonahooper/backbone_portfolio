@@ -28,7 +28,8 @@ $(document).ready(function() {
     firstName: "Jason",
     lastName: "Hooper",
     bio: "Junior Ruby on Rails Developer from Cardiff, Wales.",
-    mission: "To find a position where my skills are appreciated and I may continue developing."
+    mission: "To find a position where my skills are appreciated and I may continue developing.",
+    imageURL: "uploads/me.jpg"
   });
   me.setFullName();
 

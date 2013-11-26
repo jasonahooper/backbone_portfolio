@@ -7,7 +7,8 @@ app.views.UserView = Backbone.View.extend({
     'click #bio img' : 'editImageURL',
     'change #edit-user-image-url' : 'updateImageURL',
     'click h1.name' : 'editName',
-    'change #edit-user-name' : 'updateName',
+    'change #edit-user-first-name' : 'updateName',
+    'change #edit-user-last-name' : 'updateName',
     'click h2.bio' : 'editBio',
     'change #edit-user-bio' : 'updateBio',
     'click h3.mission' : 'editMission',
@@ -41,13 +42,20 @@ app.views.UserView = Backbone.View.extend({
 
   editName: function(event) {
     var h1 = $(event.currentTarget);
-    $('#edit-user-name').removeClass("hidden-edit").val(h1.html());
+    $('#edit-user-first-name').removeClass("hidden-edit").
+      val(this.model.get("firstName"));
+    $('#edit-user-last-name').removeClass("hidden-edit").
+      val(this.model.get("lastName"));
 
     h1.hide();
   },
 
   updateName: function(event) {
-    this.model.set("fullName", $('#edit-user-name').val());
+    if (event.currentTarget.id === "edit-user-first-name") {
+      this.model.set("firstName", $('#edit-user-first-name').val());
+  } else {
+      this.model.set("lastName", $('#edit-user-last-name').val());
+    }
   },
 
   editBio: function(event) {

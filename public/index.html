@@ -16,8 +16,9 @@
 
     <script type="text/template" id='user-template'>
       <div id="bio">
-        <img src="uploads/me.jpg" width="200" height="200" alt=<%= user.fullName %>
+        <img src="<%=user.imageURL%>" width="200" height="200" alt="<%= user.fullName %>"
         class="bio-image shadowed" />
+        <input type="text" id="edit-user-image-url" class="hidden-edit" />
 
         <div class="bio-text">
           <h1 class="name"><%= user.fullName %></h1>
@@ -31,6 +32,7 @@
           <h3 class="mission">
             <%= user.mission %>
           </h3>
+          <input type="text" id="edit-user-mission" class="hidden-edit" />
         </div>
       </div>
     </script>

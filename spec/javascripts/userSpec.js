@@ -6,7 +6,8 @@ describe("The User Model", function() {
       firstName: "Dan",
       lastName: "Garland",
       bio: "A short story...",
-      mission: "A short mission..."
+      mission: "A short mission...",
+      imageURL: "uploads/me.jpg"
     });
   });
 
@@ -108,6 +109,12 @@ describe("The User Model", function() {
       user.set("mission", undefined);
       expect(user.isValid()).toBeFalsy();
       expect(user.validationError.message).toEqual("Mission must be defined.");
+    });
+
+    it("should be invalid without image URL", function() {
+      user.set("imageURL", undefined);
+      expect(user.isValid()).toBeFalsy();
+      expect(user.validationError.message).toEqual("Image URL must be defined.");
     });
   });
 });

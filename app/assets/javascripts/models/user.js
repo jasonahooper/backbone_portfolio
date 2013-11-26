@@ -34,5 +34,8 @@ app.models.User = Backbone.Model.extend({
     if(attrs.mission === undefined) {
       return { message: "Mission must be defined." };
     };
+    if(attrs.imageURL === undefined) {
+      return { message: "Image URL must be defined." };
+    };
   }
 });

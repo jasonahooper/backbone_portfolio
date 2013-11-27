@@ -109,7 +109,7 @@ describe("Project List", function() {
     it("should fetch from backing store", function() {
       var someOtherList = new app.collections.ProjectList();
       someOtherList.fetch();
-      expect(projects.first()).toBe(lastProject);
+      expect(someOtherList.first()).toBe(lastProject);
     });
   });
 

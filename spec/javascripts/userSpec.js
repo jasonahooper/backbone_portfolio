@@ -9,7 +9,34 @@ describe("The User Model", function() {
       mission: "A short mission...",
       imageURL: "uploads/me.jpg"
     });
+
+    someoneElse = new app.models.User();
+    someoneElse.projects.create(new app.models.Project());
   });
+
+  describe("with some projects", function() {
+    beforeEach(function() {
+      user.projects.add(new app.models.Project({
+        title: "My Amazing Project"
+      }));
+      user.save();
+    });
+
+    it("should have one project", function() {
+      expect(user.projects.length).toBe(1);
+    });
+
+    it("should still have a project when we reload user", function() {
+      user.fetch();
+      console.log("break");
+    });
+  });
+
+
+
+
+
+
 
   it("should have a firstName", function() {
     expect(user.get("firstName")).toBe("Dan");

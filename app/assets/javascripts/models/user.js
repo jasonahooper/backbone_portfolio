@@ -2,6 +2,7 @@ app.models.User = Backbone.Model.extend({
   localStorage: new Backbone.LocalStorage('portfolio-user'),
 
   initialize: function() {
+    this.projects = new app.collections.ProjectList();
     this.bind("change:firstName change:lastName", this.setFullName);
   },
 

@@ -2,6 +2,7 @@ describe("The User Model", function() {
   var user;
 
   beforeEach(function() {
+    localStorage.clear();
     user = new app.models.User({
       firstName: "Dan",
       lastName: "Garland",
@@ -19,7 +20,6 @@ describe("The User Model", function() {
       user.projects.add(new app.models.Project({
         title: "My Amazing Project"
       }));
-      user.save();
     });
 
     it("should have one project", function() {
@@ -28,15 +28,12 @@ describe("The User Model", function() {
 
     it("should still have a project when we reload user", function() {
       user.fetch();
-      console.log("break");
+      user.projects.reset();
+      user.projects.fetch();
+      user.projects.where({user_cid : user.cid});
+      expect(user.projects.length).toBe(1);
     });
   });
-
-
-
-
-
-
 
   it("should have a firstName", function() {
     expect(user.get("firstName")).toBe("Dan");

@@ -3,6 +3,7 @@ app.models.User = Backbone.Model.extend({
 
   initialize: function() {
     this.projects = new app.collections.ProjectList();
+    this.projects.user = this;
     this.bind("change:firstName change:lastName", this.setFullName);
   },
 

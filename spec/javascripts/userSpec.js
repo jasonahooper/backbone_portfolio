@@ -11,15 +11,24 @@ describe("The User Model", function() {
       imageURL: "uploads/me.jpg"
     });
 
-    someoneElse = new app.models.User();
+    someoneElse = new app.models.User({
+      firstName: "Jason",
+      lastName: "Hooper",
+      bio: "A short story...",
+      mission: "A short mission...",
+      imageURL: "uploads/JasonHooper.jpg"
+    });
+    someoneElse.save();
+
     someoneElse.projects.create(new app.models.Project());
   });
 
   describe("with some projects", function() {
     beforeEach(function() {
-      user.projects.add(new app.models.Project({
+      user.projects.create(new app.models.Project({
         title: "My Amazing Project"
       }));
+      user.save();
     });
 
     it("should have one project", function() {
@@ -27,10 +36,8 @@ describe("The User Model", function() {
     });
 
     it("should still have a project when we reload user", function() {
-      user.fetch();
       user.projects.reset();
-      user.projects.fetch();
-      user.projects.where({user_cid : user.cid});
+      user.fetch();
       expect(user.projects.length).toBe(1);
     });
   });

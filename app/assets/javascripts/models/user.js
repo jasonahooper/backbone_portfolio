@@ -4,7 +4,20 @@ app.models.User = Backbone.Model.extend({
   initialize: function() {
     this.projects = new app.collections.ProjectList();
     this.projects.user = this;
-    this.bind("change:firstName change:lastName", this.setFullName);
+    this.bind({
+      "change:firstName change:lastName": this.setFullName,
+      "sync": this.gotSync
+    });
+  },
+
+  gotSync: function() {
+    this.projects.fetch();
+    if (this.id) {
+      var result = this.projects.where({user_id : this.id});
+      this.projects = new app.collections.ProjectList(result);
+      this.projects.user = this;
+      return this.projects;
+    }
   },
 
   setFullName: function() {

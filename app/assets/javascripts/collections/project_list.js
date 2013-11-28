@@ -1,7 +1,8 @@
 app.collections.ProjectList = Backbone.Collection.extend({
 
+  url: '/projects',
+
   model: app.models.Project,
-  localStorage: new Backbone.LocalStorage('portfolio-project'),
   initialize: function() {
     this.bind({
       "add": this.gotAdd

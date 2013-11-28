@@ -140,25 +140,25 @@ describe("The User Model", function() {
     it("should be invalid without firstName", function() {
       user.set("firstName", undefined);
       expect(user.isValid()).toBeFalsy();
-      expect(user.validationError.message).toEqual("First Name must be defined");
+      expect(user.validationError.message).toEqual("First Name must be defined.");
     });
 
     it("should be invalid without lastName", function() {
       user.set("lastName", undefined);
       expect(user.isValid()).toBeFalsy();
-      expect(user.validationError.message).toEqual("Last Name must be defined");
+      expect(user.validationError.message).toEqual("Last Name must be defined.");
     });
 
     it("should be invalid without Bio", function() {
       user.set("bio", undefined);
       expect(user.isValid()).toBeFalsy();
-      expect(user.validationError.message).toEqual("Bio must be defined");
+      expect(user.validationError.message).toEqual("Bio must be defined.");
     });
 
     it("should be invalid without Mission", function() {
       user.set("mission", undefined);
       expect(user.isValid()).toBeFalsy();
-      expect(user.validationError.message).toEqual("Mission must be defined");
+      expect(user.validationError.message).toEqual("Mission must be defined.");
     });
   });
 });

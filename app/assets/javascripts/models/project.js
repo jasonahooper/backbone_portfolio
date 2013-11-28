@@ -1,6 +1,6 @@
 app.models.Project = Backbone.Model.extend({
 
-  localStorage: new Backbone.LocalStorage('portfolio-project'),
+  urlRoot: '/projects',
 
   initialize: function() {
     this.bind("change", this.updateTitle);

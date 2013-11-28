@@ -1,8 +1,8 @@
 app.Router = Backbone.Router.extend({
   routes: {
     ''          : 'showIndex',
-    '/index'    : 'showIndex',
-    '/user:id'  : 'showUser'
+    'index'     : 'showIndex',
+    'user/:id'  : 'showUser'
   },
 
   showIndex: function() {
@@ -17,8 +17,11 @@ app.Router = Backbone.Router.extend({
     $('#content').html(view.render().el);
   },
 
-  showUser: function(user) {
-    user.fetch();
+  showUser: function(id) {
+    user_list = new app.collections.UserList();
+    user_list.fetch();
+    me = user_list.findWhere({id: id});
+
     // if (me.values().length === 0) {
     //   me = new app.models.User({
     //     firstName: "Jason",

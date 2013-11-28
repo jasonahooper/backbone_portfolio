@@ -16,6 +16,13 @@
 
     <script type="text/template" id='user-list-template'>
       <h2>User List</h2>
+      <ul>
+          <li>
+            <% _(collection.models).each(function(user) { %>
+              <a href="#"><%= user.get("fullName")+user.id %></a>
+           <% }) %>
+          </li>
+      </ul>
     </script>
 
     <script type="text/template" id='user-template'>

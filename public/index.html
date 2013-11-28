@@ -14,6 +14,10 @@
 
   <section id="content">
 
+    <script type="text/template" id='user-list-template'>
+      <h2>User List</h2>
+    </script>
+
     <script type="text/template" id='user-template'>
       <div id="bio">
         <img src="<%=user.imageURL%>" width="200" height="200" alt="<%= user.fullName %>"
@@ -137,8 +141,10 @@
   <script src="../app/assets/javascripts/models/project.js"></script>
   <script src="../app/assets/javascripts/models/user.js"></script>
   <script src="../app/assets/javascripts/collections/project_list.js"></script>
+  <script src="../app/assets/javascripts/collections/user_list.js"></script>
   <script src="../app/assets/javascripts/views/project_view.js"></script>
   <script src="../app/assets/javascripts/views/project_list_view.js"></script>
+  <script src="../app/assets/javascripts/views/user_list_view.js"></script>
 
   <script src="../app/assets/javascripts/views/user_view.js"></script>
   <script src="../app/assets/javascripts/app.js"></script>

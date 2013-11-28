@@ -6,7 +6,15 @@ app.Router = Backbone.Router.extend({
   },
 
   showIndex: function() {
-    console.log("In index");
+    var user_list = new app.collections.UserList();
+    user_list.fetch();
+
+    var view = new app.views.UserListView({
+      collection: user_list
+    });
+
+    $('#content').html = "";
+    $('#content').html(view.render().el);
   },
 
   showUser: function(user) {

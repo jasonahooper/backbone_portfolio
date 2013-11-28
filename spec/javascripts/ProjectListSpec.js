@@ -11,7 +11,7 @@ describe("Project List", function() {
 
     beforeEach(function() {
       _(3).times(function(n) {
-        projects.add({});
+        projects.add(new app.models.Project({}));
       });
 
       lastProject = projects.last();
@@ -26,9 +26,9 @@ describe("Project List", function() {
       expect(projects.length).toBe(3);
     });
 
-    it("should be able to merge changes in to the project list", function() {
+    it("should be able merge changes into the projectList", function() {
       lastProject.set("title", "My Amazing Project");
-      projects.add(lastProject, { merge : true });
+      projects.add(lastProject, { merge: true });
       expect(projects.length).toBe(3);
       expect(projects.last().get("title")).toBe("My Amazing Project");
     });
@@ -38,7 +38,7 @@ describe("Project List", function() {
         projects.remove(lastProject);
       });
 
-      it("should have 2 projects", function() {
+      it("should add 2 projects", function() {
         expect(projects.length).toBe(2);
       });
     });
@@ -47,20 +47,20 @@ describe("Project List", function() {
       var someOtherProject;
 
       beforeEach(function() {
-        // add this one
+        // Add this one
         someOtherProject = new app.models.Project({
           title: "Some Other Project"
         });
 
-        // update this one
-        lastProject.set("title", "My Amazing Project");
+        // Update this one
+        lastProject.set("title", "My Amazing Project")
 
-        // remove the others...
-        var updates = [lastProject, someOtherProject ];
+        // Remove the others...
+        var updates = [lastProject, someOtherProject];
         projects.set(updates);
       });
 
-      it("should take care of adding and removing items", function() {
+      it("should take care of adding/removing the items", function() {
         expect(projects.length).toBe(2);
         expect(projects.first()).toBe(lastProject);
         expect(projects.first().get("title")).toBe("My Amazing Project");
@@ -73,43 +73,53 @@ describe("Project List", function() {
       expect(projects.get(lastProject.cid)).toBe(lastProject);
     });
 
+    describe ("saving projects", function() {
+      beforeEach(function() {
+        spyOn($, "ajax");
+        projects.sync("create", projects); // not save()
+        lastRequest = $.ajax.mostRecentCall.args[0];
+        expect(lastRequest.url).toEqual("/projects");
+        expect(lastRequest.type).toEqual("POST");
+      });
 
-    // describe("saving projects", function() {
-    //   beforeEach(function() {
-    //     projects.sync('create', projects); // note: not save()
-    //   });
+      it("should save each of the projects", function() {
+        projects.forEach(function(project) {
+          expect(project.id).not.toBeNull();
+        });
+      });
 
-    //   it("should save each of the projects", function() {
-    //     projects.forEach(function(project) {
-    //       expect(project.id).not.toBeNull();
-    //     });
-    //   });
-
-    //   it("should fetch from the backing store", function() {
-    //     var newProjects = new app.collections.ProjectList();
-    //     newProjects.fetch();
-    //     expect(newProjects.length).toBe(3);
-    //   });
-    // });
+      it("should fetch from the backing store", function() {
+        var newProjects = new app.collections.ProjectList();
+        newProjects.fetch();
+        lastRequest = $.ajax.mostRecentCall.args[0];
+        expect(lastRequest.url).toEqual("/projects");
+        expect(lastRequest.type).toEqual("GET");
+      });
+    });
   });
+
   describe("saving individual projects", function() {
+    var lastProject;
 
     beforeEach(function() {
       var project = new app.models.Project({
         title: "My Amazing Project"
       });
-      lastProject = projects.create(project); // add and sync together
+      lastProject = projects.create(project); // add + sync together
     });
 
-    it("should work", function() {
+    it("should bloody work", function() {
       expect(projects.length).toBe(1);
       expect(projects.first().id).not.toBeNull();
     });
 
     it("should fetch from backing store", function() {
       var someOtherList = new app.collections.ProjectList();
+      spyOn($, "ajax");
       someOtherList.fetch();
-      expect(someOtherList.first().id).toBe(lastProject.id);
+      lastRequest = $.ajax.mostRecentCall.args[0];
+      expect(lastRequest.url).toEqual("/projects");
+      expect(lastRequest.type).toEqual("GET");
     });
   });
 
@@ -118,7 +128,7 @@ describe("Project List", function() {
 
     beforeEach(function() {
       var project = new app.models.Project({
-        title: "My Amazing Project"
+        title : "My Amazing Project"
       });
       myAmazingProject = projects.add(project);
     });

@@ -12,6 +12,7 @@ app.models.User = Backbone.Model.extend({
   },
 
   gotSync: function() {
+    setFullName();
     this.projects.fetch();
     if (this.id) {
       var result = this.projects.where({user_id : this.id});

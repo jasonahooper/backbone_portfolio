@@ -6,7 +6,8 @@ app.views.ProjectView = Backbone.View.extend({
   events: {
     'dblclick .project-name': 'editProjectName',
     'click .remove-project': 'removeProject',
-    'keypress .edit-title': 'updateTitle'
+    'keypress .edit-title': 'updateTitle',
+    'click .project-url': 'editURL'
   },
 
   render: function() {
@@ -35,5 +36,9 @@ app.views.ProjectView = Backbone.View.extend({
     this.model.collection.remove(this.model);
     this.model.destroy();
     collection.trigger('change');
- }
+  },
+
+  editURL: function() {
+    console.log("clicked URL");
+  }
 });

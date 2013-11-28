@@ -1,7 +1,6 @@
 app.Router = Backbone.Router.extend({
   routes: {
     ''          : 'showIndex',
-    'index'     : 'showIndex',
     'user/:id'  : 'showUser'
   },
 
@@ -44,7 +43,7 @@ app.Router = Backbone.Router.extend({
 
     me.save();
 
-    $('#user-profile').html(userView.render().el);
-    $('#project-list').html(projectListView.render().el);
+    $('#content').html(userView.render().el);
+    $('#content').append(projectListView.render().el);
   }
 });

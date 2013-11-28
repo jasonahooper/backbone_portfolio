@@ -5,7 +5,7 @@ app.views.UserListView = Backbone.View.extend({
   template: _.template($("#user-list-template").html()),
 
   events: {
-    // 'click #add-project': 'newProject'
+    'click .user-show': 'showUser'
   },
 
   initialize: function() {
@@ -19,6 +19,12 @@ app.views.UserListView = Backbone.View.extend({
     }));
 
     return this;
+  },
+
+  showUser: function(event) {
+    event.preventDefault();
+    var router = new app.Router();
+    router.navigate("user/" + $(event.currentTarget).data("id"), {trigger: true});
   }
 
 });

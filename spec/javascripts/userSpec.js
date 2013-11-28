@@ -25,10 +25,10 @@ describe("The User Model", function() {
 
   describe("with some projects", function() {
     beforeEach(function() {
+      user.save();
       user.projects.create(new app.models.Project({
         title: "My Amazing Project"
       }));
-      user.save();
     });
 
     it("should have one project", function() {

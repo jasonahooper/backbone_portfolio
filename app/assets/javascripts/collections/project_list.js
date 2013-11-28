@@ -9,8 +9,7 @@ app.collections.ProjectList = Backbone.Collection.extend({
   },
 
   gotAdd: function(model) {
-    if (this.user) {
-      this.user.save();
+    if (this.user && model.get("user_id") === undefined) {
       model.set("user_id", this.user.id);
     }
   }

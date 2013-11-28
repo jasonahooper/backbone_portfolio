@@ -41,18 +41,23 @@ app.models.User = Backbone.Model.extend({
   validate: function(attrs) {
     if(attrs.firstName === undefined) {
       return { message: "First Name must be defined." };
-    };
+    }
     if(attrs.lastName === undefined) {
       return { message: "Last Name must be defined." };
-    };
+    }
     if(attrs.bio === undefined) {
       return { message: "Bio must be defined." };
-    };
+    }
     if(attrs.mission === undefined) {
       return { message: "Mission must be defined." };
-    };
+    }
     if(attrs.imageURL === undefined) {
       return { message: "Image URL must be defined." };
-    };
+    }
+  },
+
+  parse: function(response, options) {
+    console.log("user.js parse : " + response.type);
+    return response;
   }
 });

@@ -18,6 +18,11 @@ app.models.Project = Backbone.Model.extend({
     if(this.attributes.title == "") {
       return false;
     }
+  },
+
+  parse: function(response, options) {
+    console.log("project.js parse : " + response.type);
   }
+
 
 });

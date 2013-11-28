@@ -13,6 +13,11 @@ app.collections.ProjectList = Backbone.Collection.extend({
     if (this.user && model.get("user_id") === undefined) {
       model.set("user_id", this.user.id);
     }
+  },
+
+  parse: function(response, options) {
+    console.log("project_list.js parse : " + response.type);
   }
+
 
 });

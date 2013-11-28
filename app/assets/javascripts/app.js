@@ -3,7 +3,7 @@ $(document).ready(function() {
   var me = new app.models.User({
     firstName: "Jason",
     lastName: "Hooper",
-    bio: "Junior Ruby on Rails Developer from Cardiff, Wales.",
+    bio: "Junior Web Developer from Cardiff, Wales.",
     mission: "To find a position where my skills are appreciated and I may continue developing.",
     imageURL: "uploads/JasonHooper.jpg"
   });

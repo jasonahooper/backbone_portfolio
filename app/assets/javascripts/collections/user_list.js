@@ -14,6 +14,8 @@ app.collections.UserList = Backbone.Collection.extend({
     for(var i=0; i < response.length; i++) {
       response[i].firstName = response[i].first_name;
       response[i].lastName = response[i].last_name;
+      response[i].id = response[i].id.toString();
+      response[i].imageURL = response[i].image_url;
     }
 
     return response;

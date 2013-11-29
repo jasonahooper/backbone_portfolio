@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   def create
-    Project.create!(project_params)
-    render :nothing => true
+    project = Project.create!(project_params)
+    render :json => { :id => project.id }
   end
 
   private

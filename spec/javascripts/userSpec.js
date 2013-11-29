@@ -8,14 +8,16 @@ describe("The User Model", function() {
       firstName: "Dan",
       lastName: "Garland",
       bio: "Freelance Ruby Guy from London",
-      mission: "To understand Backbone.js"
+      mission: "To understand Backbone.js",
+      imageURL: "dummy.jpg"
     });
 
     someoneElse = new app.models.User({
       firstName: "Joe",
       lastName: "Bloggs",
       bio: "Test Object",
-      mission: "To help test Backbone"
+      mission: "To help test Backbone",
+      imageURL: "dummy.jpg"
     });
     someoneElse.save();
 

@@ -19,8 +19,8 @@
       <ul>
           <li>
             <% _(collection.models).each(function(user) { %>
-              <a href="#" class="user-show" data-id="<%= user.id %>"><%= user.get("fullName") %></a>
-              <!-- <a href="#user/<%= user.id %>"><%= user.get("fullName") %></a> -->
+              <a href="#" class="user-show" data-id="<%= user.id %>"><%= user.get("fullName")+'(event)' %></a>
+             <a href="#user/<%= user.id %>"><%= user.get("fullName")+'(link)' %></a>
            <% }) %>
           </li>
       </ul>

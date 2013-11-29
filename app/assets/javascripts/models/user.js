@@ -66,13 +66,18 @@ app.models.User = Backbone.Model.extend({
   },
 
   parse: function(response, options) {
-    console.log("user.js parse : " + response.type);
-
     response.firstName = response.first_name;
     response.lastName = response.last_name;
     response.id = response.id.toString();
     response.imageURL = response.image_url;
-
     return response;
-   }
+  },
+
+  toJSON: function() {
+    this.attributes.first_name = this.attributes.firstName;
+    this.attributes.last_name = this.attributes.lastName;
+    this.attributes.image_url = this.attributes.imageURL;
+    return this.attributes;
+  }
+
 });

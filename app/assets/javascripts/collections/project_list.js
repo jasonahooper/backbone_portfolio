@@ -14,7 +14,6 @@ app.collections.ProjectList = Backbone.Collection.extend({
   },
 
   parse: function(response, options) {
-    console.log("project_list.js parse : " + response.type);
     for(var i=0; i < response.length; i++) {
       response[i].id = response[i].id.toString();
       response[i].user_id = response[i].user_id.toString();

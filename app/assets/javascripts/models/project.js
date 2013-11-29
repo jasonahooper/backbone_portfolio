@@ -21,11 +21,13 @@ app.models.Project = Backbone.Model.extend({
   },
 
   parse: function(response, options) {
-    console.log("project.js parse : " + response.type);
     response.id = response.id.toString();
     response.user_id = response.user_id.toString();
     return response;
-  }
+  },
 
+  toJSON: function() {
+    return this.attributes;
+  }
 
 });

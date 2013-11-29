@@ -82,6 +82,10 @@ app.views.UserView = Backbone.View.extend({
   updateMission: function(event) {
     this.model.set("mission", $('#edit-user-mission').val());
     this.model.save();
+  },
+
+  parse: function(response) {
+    console.log("user_view parse");
   }
 
 });

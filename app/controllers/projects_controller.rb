@@ -6,7 +6,8 @@ class ProjectsController < ApplicationController
 
   def create
     project = Project.create!(project_params)
-    render :json => { :id => project.id }
+    render :nothing => true
+    # render :json => { :id => project.id }
   end
 
   def destroy

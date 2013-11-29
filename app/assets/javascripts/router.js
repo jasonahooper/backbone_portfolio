@@ -21,11 +21,9 @@ app.Router = Backbone.Router.extend({
   },
 
   showUser: function(id) {
-    user_list = new app.collections.UserList();
-    user_list.fetch({
-      success: function() {
-        me = user_list.findWhere({id: id});
-
+    me = new app.models.User({id : id});
+    me.fetch({
+      success: function(me) {
         // if (me.values().length === 0) {
         //   me = new app.models.User({
         //     firstName: "Jason",

@@ -12,13 +12,17 @@ app.models.User = Backbone.Model.extend({
   gotSync: function() {
     console.log("gotsync: user");
     this.setFullName();
-    this.projects.fetch();
-    if (this.id) {
-      var result = this.projects.where({user_id : this.id});
-      this.projects = new app.collections.ProjectList(result);
-      this.projects.user = this;
-      return this.projects;
-    }
+    var _this = this;
+    this.projects.fetch({
+      success: function(projects) {
+        if (_this.id) {
+          var result = projects.where({user_id : _this.id});
+          _this.projects = new app.collections.ProjectList(result);
+          _this.projects.user = _this;
+          return _this.projects;
+        }
+      }
+    });
   },
 
   gotChange: function() {
@@ -63,6 +67,12 @@ app.models.User = Backbone.Model.extend({
 
   parse: function(response, options) {
     console.log("user.js parse : " + response.type);
+
+    response.firstName = response.first_name;
+    response.lastName = response.last_name;
+    response.id = response.id.toString();
+    response.imageURL = response.image_url;
+
     return response;
-  }
+   }
 });

@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+
   def index
     render :json => User.all
+  end
+
+  def show
+    user = User.find(params[:id])
+    render :json => user
   end
 
   def update
@@ -10,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.permit(:first_name, :last_name, :bio, :mission, :image_url)
   end
+
 end

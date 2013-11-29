@@ -17,6 +17,7 @@ app.collections.ProjectList = Backbone.Collection.extend({
 
   parse: function(response, options) {
     console.log("project_list.js parse : " + response.type);
+    return response;
   }
 
 

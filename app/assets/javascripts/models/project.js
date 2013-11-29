@@ -22,6 +22,7 @@ app.models.Project = Backbone.Model.extend({
 
   parse: function(response, options) {
     console.log("project.js parse : " + response.type);
+    return response;
   }
 
 

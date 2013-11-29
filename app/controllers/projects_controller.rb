@@ -16,6 +16,13 @@ class ProjectsController < ApplicationController
     render :nothing => true
   end
 
+  def update
+    binding.pry
+    project = Project.find(params[:id])
+    project.update_attributes!(project_params)
+    render :nothing => true
+  end
+
   private
 
   def project_params

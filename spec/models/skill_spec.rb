@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ProjectSkill do
+describe Skill do
   it { should belong_to(:project) }
 end

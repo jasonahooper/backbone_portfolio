@@ -44,7 +44,7 @@ app.Router = Backbone.Router.extend({
           collection: me.projects
         });
 
-        me.save();
+        // me.save();
 
         $('#content').html(userView.render().el);
         $('#content').append(projectListView.render().el);

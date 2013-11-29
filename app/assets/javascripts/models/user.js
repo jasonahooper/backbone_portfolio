@@ -17,7 +17,8 @@ app.models.User = Backbone.Model.extend({
       success: function(projects) {
         if (_this.id) {
           var result = projects.where({user_id : _this.id});
-          _this.projects = new app.collections.ProjectList(result);
+          // _this.projects = new app.collections.ProjectList(result);
+          _this.projects.reset(projects.models);
           _this.projects.user = _this;
           return _this.projects;
         }
@@ -26,7 +27,6 @@ app.models.User = Backbone.Model.extend({
   },
 
   gotChange: function() {
-    console.log("gotchange: user");
     this.setFullName();
     this.save();
   },

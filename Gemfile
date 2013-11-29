@@ -38,5 +38,10 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pry-byebug', group: [:development, :test]
+group :development, :test do
+  gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+end
 # gem 'ejs'

@@ -38,6 +38,7 @@ app.views.UserView = Backbone.View.extend({
 
   updateImageURL: function(event) {
     this.model.set("imageURL", $('#edit-user-image-url').val());
+    this.model.save();
   },
 
   editName: function(event) {
@@ -53,9 +54,10 @@ app.views.UserView = Backbone.View.extend({
   updateName: function(event) {
     if (event.currentTarget.id === "edit-user-first-name") {
       this.model.set("firstName", $('#edit-user-first-name').val());
-  } else {
+    } else {
       this.model.set("lastName", $('#edit-user-last-name').val());
     }
+    this.model.save();
   },
 
   editBio: function(event) {
@@ -67,6 +69,7 @@ app.views.UserView = Backbone.View.extend({
 
   updateBio: function(event) {
     this.model.set("bio", $('#edit-user-bio').val());
+    this.model.save();
   },
 
   editMission: function(event) {
@@ -78,6 +81,7 @@ app.views.UserView = Backbone.View.extend({
 
   updateMission: function(event) {
     this.model.set("mission", $('#edit-user-mission').val());
+    this.model.save();
   }
 
 });

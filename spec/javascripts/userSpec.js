@@ -63,7 +63,7 @@ describe("The User Model", function() {
 
   it("should have a Name", function() {
     expect(user.getName()).toBe("Dan Garland");
-  })
+  });
 
   it("should have cid", function() {
     expect(user.cid).not.toBeNull();

@@ -2,7 +2,7 @@ app.views.UserView = Backbone.View.extend({
 
   tagName: 'div',
   className: 'user',
-  template: _.template($('#user-template').html()),
+  template: JST['templates/user'],
   events: {
     'click #bio img' : 'editImageURL',
     'change #edit-user-image-url' : 'updateImageURL',

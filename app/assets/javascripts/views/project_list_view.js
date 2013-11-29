@@ -2,7 +2,7 @@ app.views.ProjectListView = Backbone.View.extend({
 
   tagName: 'div',
   className: 'project-list',
-  template: _.template($("#project-list-template").html()),
+  template: JST['templates/project_list'],
 
   events: {
     'click #add-project': 'newProject'
@@ -22,6 +22,8 @@ app.views.ProjectListView = Backbone.View.extend({
       var view = new app.views.ProjectView({model: project});
       _this.$el.append(view.render().el);
     });
+
+    this.$el.append("<div class='clear'></div>");
 
     return this;
   },

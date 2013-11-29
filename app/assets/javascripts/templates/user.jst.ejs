@@ -1,0 +1,21 @@
+      <div id="bio">
+        <img src="<%=user.imageURL%>" width="200" height="200" alt="<%= user.fullName %>"
+        class="bio-image shadowed" />
+        <input type="text" id="edit-user-image-url" class="hidden-edit" />
+
+        <div class="bio-text">
+          <h1 class="name"><%= user.fullName %></h1>
+          <input type="text" id="edit-user-first-name" class="hidden-edit" />
+          <input type="text" id="edit-user-last-name" class="hidden-edit" />
+
+          <h2 class="bio">
+            <%= user.bio %>
+          </h2>
+          <input type="text" id="edit-user-bio" class="hidden-edit" />
+
+          <h3 class="mission">
+            <%= user.mission %>
+          </h3>
+          <input type="text" id="edit-user-mission" class="hidden-edit" />
+        </div>
+      </div>

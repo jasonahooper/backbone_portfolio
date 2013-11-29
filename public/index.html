@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>My Amazing Fat Client Portfolio Builder</title>
-  <link rel="stylesheet" href="assets/main.css">
+  <link rel="stylesheet" href="assets/application.css">
 </head>
 
 <body>
@@ -14,41 +14,6 @@
 
   <section id="content">
 
-    <script type="text/template" id='user-list-template'>
-      <h2>User List</h2>
-      <ul>
-          <li>
-            <% _(collection.models).each(function(user) { %>
-              <a href="#" class="user-show" data-id="<%= user.id %>"><%= user.get("fullName")+'(event)' %></a>
-             <a href="#user/<%= user.id %>"><%= user.get("fullName")+'(link)' %></a>
-           <% }) %>
-          </li>
-      </ul>
-    </script>
-
-    <script type="text/template" id='user-template'>
-      <div id="bio">
-        <img src="<%=user.imageURL%>" width="200" height="200" alt="<%= user.fullName %>"
-        class="bio-image shadowed" />
-        <input type="text" id="edit-user-image-url" class="hidden-edit" />
-
-        <div class="bio-text">
-          <h1 class="name"><%= user.fullName %></h1>
-          <input type="text" id="edit-user-first-name" class="hidden-edit" />
-          <input type="text" id="edit-user-last-name" class="hidden-edit" />
-
-          <h2 class="bio">
-            <%= user.bio %>
-          </h2>
-          <input type="text" id="edit-user-bio" class="hidden-edit" />
-
-          <h3 class="mission">
-            <%= user.mission %>
-          </h3>
-          <input type="text" id="edit-user-mission" class="hidden-edit" />
-        </div>
-      </div>
-    </script>
     <div id='user-profile'>
     </div>
 
@@ -57,80 +22,6 @@
 
       <div id="project-list">
       </div>
-      <script type="text/template" id="project-list-template">
-        <p>
-          <button id="add-project">Add Project</button>
-        </p>
-      </script>
-
-      <script type="text/template" id="project-template">
-        <div class="sortable">
-        </div>
-
-        <div class="info">
-          <img src="uploads/project.jpg" width="350" height="165"
-          alt="My Amazing Project" class="project-image shadowed" />
-
-          <div class="project-details">
-            <h3 class="project-name">
-              <%= title %>
-            </h3>
-
-            <input class="edit-title hidden-edit" placeholder="Enter a title">
-
-            <div class="project-url">
-              <a href="<%= url %>">
-                <%= url %>
-              </a>
-            </div>
-            <input class="edit-url hidden-edit" placeholder="Enter a url">
-
-            <div class="skills">
-              <span class="skill-label">
-                Skills:
-              </span>
-
-              <ul class="skill-list">
-                <li class="skill">
-                  <span class="name">Ruby</span>
-                  <span class="delete">Remove</span>
-                </li>
-                <li class="skill">
-                  <span class="name">Rails</span>
-                  <span class="delete">Remove</span>
-                </li>
-                <li class="skill">
-                  <span class="name">AJAX</span>
-                  <span class="delete">Remove</span>
-                </li>
-                <li class="skill">
-                  <span class="name">HTML 5</span>
-                  <span class="delete">Remove</span>
-                </li>
-                <li class="skill">
-                  <span class="name">CSS</span>
-                  <span class="delete">Remove</span>
-                </li>
-                <li class="skill">
-                  <span class="name">Javascript</span>
-                  <span class="delete">Remove</span>
-                </li>
-              </ul>
-
-              <span class="add-skill">Add Skill</span>
-            </div>
-
-            <div class="body">
-              <%= body %>
-            </div>
-          </div>
-        </div>
-
-        <div class="remove-project">
-          Remove Project
-        </div>
-
-      </script>
 
       <div class="clear"></div>
     </div>
@@ -145,16 +36,20 @@
   <script src="assets/underscore-min.js"></script>
   <script src="assets/backbone.js"></script>
   <script src="assets/backbone.localStorage-min.js"></script>
+  <script src="assets/ejs_production.js"></script>
   <script src="assets/boot.js"></script>
   <script src="assets/models/project.js"></script>
   <script src="assets/models/user.js"></script>
   <script src="assets/collections/project_list.js"></script>
   <script src="assets/collections/user_list.js"></script>
+  <script src="assets/templates/user.jst.ejs"></script>
+  <script src="assets/templates/user_list.jst.ejs"></script>
+  <script src="assets/templates/project.jst.ejs"></script>
+  <script src="assets/templates/project_list.jst.ejs"></script>
+  <script src="assets/views/user_view.js"></script>
+  <script src="assets/views/user_list_view.js"></script>
   <script src="assets/views/project_view.js"></script>
   <script src="assets/views/project_list_view.js"></script>
-  <script src="assets/views/user_list_view.js"></script>
-
-  <script src="assets/views/user_view.js"></script>
   <script src="assets/app.js"></script>
   <script src="assets/router.js"></script>
 </body>

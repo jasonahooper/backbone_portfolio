@@ -4,9 +4,7 @@ app.collections.ProjectList = Backbone.Collection.extend({
 
   model: app.models.Project,
   initialize: function() {
-    this.bind({
-      "add": this.gotAdd
-    });
+    this.bind("add", this.gotAdd);
   },
 
   gotAdd: function(model) {

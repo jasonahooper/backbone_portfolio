@@ -5,9 +5,7 @@ app.collections.UserList = Backbone.Collection.extend({
   model: app.models.User,
 
   initialize: function() {
-    this.bind({
-      "add": this.setFullName
-    });
+    this.bind("add", this.setFullName);
   },
 
   parse: function(response, options) {

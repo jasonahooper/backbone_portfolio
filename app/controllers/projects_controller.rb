@@ -25,7 +25,8 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.permit(:url, :title, :body, :user_id)
+    params.require(:project).permit(:url, :title, :body, :user_id,
+      :skills_attributes => [:skill] )
   end
 
 end

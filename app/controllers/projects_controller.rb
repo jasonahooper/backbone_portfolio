@@ -4,10 +4,14 @@ class ProjectsController < ApplicationController
     render :json => Project.all
   end
 
+  def show
+    project = Project.find(params[:id])
+    render :json => project, :methods => :skills
+  end
+
   def create
-    project = Project.create!(project_params)
+    Project.create!(project_params)
     render :nothing => true
-    # render :json => { :id => project.id }
   end
 
   def destroy

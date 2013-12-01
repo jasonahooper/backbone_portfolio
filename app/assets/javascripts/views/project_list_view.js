@@ -34,8 +34,6 @@ app.views.ProjectListView = Backbone.View.extend({
       }
     });
 
-//    this.$el.append("<div class='clear'></div>");
-
     return this;
   },
 

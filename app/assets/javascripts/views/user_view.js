@@ -31,7 +31,7 @@ app.views.UserView = Backbone.View.extend({
   editImageURL: function(event) {
     var text = event.currentTarget.getAttribute("src");
     var img = $(event.currentTarget);
-    $('#edit-user-image-url').removeClass("hidden-edit").val(text);
+    $('#edit-user-image-url').removeClass("hidden-edit").val(text.trim());
 
     img.hide();
   },
@@ -60,7 +60,7 @@ app.views.UserView = Backbone.View.extend({
 
   editBio: function(event) {
     var h2 = $(event.currentTarget);
-    $('#edit-user-bio').removeClass("hidden-edit").val(h2.html());
+    $('#edit-user-bio').removeClass("hidden-edit").val(h2.html().trim());
 
     h2.hide();
   },
@@ -71,13 +71,13 @@ app.views.UserView = Backbone.View.extend({
 
   editMission: function(event) {
     var h3 = $(event.currentTarget);
-    $('#edit-user-mission').removeClass("hidden-edit").val(h3.html());
+    $('#edit-user-mission').removeClass("hidden-edit").val(h3.html().trim());
 
     h3.hide();
   },
 
   updateMission: function(event) {
-    this.model.set("mission", $('#edit-user-mission').val());
+    this.model.set("mission", $('#edit-user-mission').val().trim());
   },
 
   parse: function(response) {

@@ -4,7 +4,7 @@ app.views.ProjectView = Backbone.View.extend({
   className: 'project',
   template: JST['templates/project'],
   events: {
-    'dblclick .project-name': 'editProjectName',
+    'click .project-name': 'editProjectName',
     'click .remove-project': 'removeProject',
     'keypress .edit-title': 'updateTitle',
     'click .project-url': 'editURL'

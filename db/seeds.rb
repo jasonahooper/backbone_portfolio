@@ -10,7 +10,11 @@ user = User.create!(:first_name => 'Jason', :last_name => 'Hooper',
   :mission => "To find a position where my skills are appreciated and I may \
     continue developing.",
   :image_url => 'uploads/JasonHooper.jpg')
-project = Project.create!(:title => 'Test Project', :user_id => user.id,
-  :url => 'example.com', :body => 'Some sample body text.')
+project = Project.create!(:title => 'Test Project 1', :user_id => user.id,
+  :url => 'example.com', :body => 'Some sample body text for 1.')
 project.skills << Skill.new(:skill => 'Ruby')
 project.skills << Skill.new(:skill => 'Rails')
+project = Project.create!(:title => 'Test Project 2', :user_id => user.id,
+  :url => 'example.com', :body => 'Some sample body text for 2.')
+project.skills << Skill.new(:skill => 'HTML')
+project.skills << Skill.new(:skill => 'XML')

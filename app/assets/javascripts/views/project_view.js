@@ -43,6 +43,7 @@ app.views.ProjectView = Backbone.View.extend({
   },
 
   editURL: function() {
+    event.preventDefault();
     console.log("clicked URL");
   }
 });

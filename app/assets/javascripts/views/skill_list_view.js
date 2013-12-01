@@ -6,7 +6,7 @@ app.views.SkillListView = Backbone.View.extend({
 
   events: {
     'click .add-skill': 'newSkill',
-    'change #new-skill': 'saveSkill'
+    'change .new-skill': 'saveSkill'
   },
 
   initialize: function() {
@@ -33,7 +33,7 @@ app.views.SkillListView = Backbone.View.extend({
 
   saveSkill: function() {
     this.collection.add({
-      skill: this.$('#new-skill input').val()
+      skill: this.$('.new-skill').val()
     });
   }
 

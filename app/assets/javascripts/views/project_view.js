@@ -35,7 +35,7 @@ app.views.ProjectView = Backbone.View.extend({
     var collection = this.model.collection;
     this.model.collection.remove(this.model);
     this.model.destroy();
-    collection.trigger('change');
+    // collection.trigger('change');
   },
 
   editURL: function() {

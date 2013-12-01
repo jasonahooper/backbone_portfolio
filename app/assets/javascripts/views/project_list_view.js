@@ -9,8 +9,8 @@ app.views.ProjectListView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.listenTo(this.collection, 'change', this.render);
-    this.listenTo(this.collection, 'reset', this.render);
+    this.listenTo(this.collection, 'add', this.render);
+    // this.listenTo(this.collection, 'reset', this.render);
     this.listenTo(this.collection, 'remove', this.render);
   },
 
@@ -21,11 +21,20 @@ app.views.ProjectListView = Backbone.View.extend({
     this.$el.html(this.template());
 
     this.collection.forEach(function(project) {
-      var view = new app.views.ProjectView({model: project});
-      _this.$el.append(view.render().el);
+      if (project.id) {
+        project.fetch({
+          success: function(project) {
+            var view = new app.views.ProjectView({model: project});
+            _this.$el.append(view.render().el);
+          }
+        });
+      } else {
+        var view = new app.views.ProjectView({model: project});
+        _this.$el.append(view.render().el);
+      }
     });
 
-    this.$el.append("<div class='clear'></div>");
+//    this.$el.append("<div class='clear'></div>");
 
     return this;
   },

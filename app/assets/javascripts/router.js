@@ -48,6 +48,7 @@ app.Router = Backbone.Router.extend({
 
         $('#content').html(userView.render().el);
         $('#content').append(projectListView.render().el);
+        $('#content').append("<div class='clear'></div>");
 
       }
     });

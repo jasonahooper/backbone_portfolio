@@ -12,6 +12,10 @@ app.views.ProjectView = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+    var skillListView = new app.views.SkillListView({
+      collection: this.model.skills
+    });
+    this.$('.skills').html(skillListView.render().el);
     return this;
   },
 

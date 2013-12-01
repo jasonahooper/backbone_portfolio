@@ -23,8 +23,8 @@ app.views.ProjectListView = Backbone.View.extend({
     this.collection.forEach(function(project) {
       if (project.id) {
         project.fetch({
-          success: function(project) {
-            var view = new app.views.ProjectView({model: project});
+          success: function(proj) {
+            var view = new app.views.ProjectView({model: proj});
             _this.$el.append(view.render().el);
           }
         });

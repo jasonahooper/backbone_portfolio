@@ -23,6 +23,15 @@ app.models.Project = Backbone.Model.extend({
   },
 
   parse: function(response, options) {
+    if (response.skills) {
+      for (var i=0; i<response.skills.length; i++) {
+        this.skills.add({
+          id: response.skills[i].id,
+          project_id: response.skills[i].project_id,
+          skill: response.skills[i].skill
+        });
+      }
+    }
     response.id = response.id.toString();
     response.user_id = response.user_id.toString();
     return response;

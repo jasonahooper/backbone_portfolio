@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
     super({:include => :skills}.merge(options))
   end
 
-  has_many :skills
+  belongs_to :user
+  has_many :skills, :dependent => :destroy
   accepts_nested_attributes_for :skills
 end

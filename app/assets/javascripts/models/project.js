@@ -4,7 +4,7 @@ app.models.Project = Backbone.Model.extend({
 
   initialize: function() {
     this.bind("change", this.updateTitle);
-    this.skills = new app.collections.SkillList();
+    this.skills = this.skills || new app.collections.SkillList();
     this.skills.project = this;
   },
 
@@ -24,6 +24,9 @@ app.models.Project = Backbone.Model.extend({
 
   parse: function(response, options) {
     if (response.skills) {
+      if (!this.skills) {
+        this.skills = new app.collections.SkillList();
+      }
       for (var i=0; i<response.skills.length; i++) {
         this.skills.add({
           id: response.skills[i].id,

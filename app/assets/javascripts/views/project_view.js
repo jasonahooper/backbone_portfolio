@@ -7,7 +7,8 @@ app.views.ProjectView = Backbone.View.extend({
     'click .project-name': 'editProjectName',
     'click .remove-project': 'removeProject',
     'keypress .edit-title': 'updateTitle',
-    'click .project-url': 'editURL'
+    'click .project-url': 'editURL',
+    'change .edit-url': 'updateURL'
   },
 
   render: function() {
@@ -42,8 +43,15 @@ app.views.ProjectView = Backbone.View.extend({
     // collection.trigger('change');
   },
 
-  editURL: function() {
+  editURL: function(event) {
     event.preventDefault();
-    console.log("clicked URL");
+    $(event.currentTarget).hide();
+    this.$('.edit-url').removeClass('hidden-edit');
+  },
+
+  updateURL: function() {
+    this.model.set('url',this.$('.edit-url').val());
+    this.model.save();
+    this.render();
   }
 });

@@ -6,7 +6,6 @@ app.views.SkillListView = Backbone.View.extend({
 
   events: {
     'click .add-skill': 'newSkill',
-    'change .new-skill': 'saveSkill'
   },
 
   initialize: function() {
@@ -28,12 +27,8 @@ app.views.SkillListView = Backbone.View.extend({
   },
 
   newSkill: function() {
-    this.$('.hidden-edit').removeClass("hidden-edit");
-  },
-
-  saveSkill: function() {
     this.collection.add({
-      skill: this.$('.new-skill').val()
+      skill: "New Skill"
     });
   }
 

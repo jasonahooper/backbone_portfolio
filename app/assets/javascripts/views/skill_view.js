@@ -10,6 +10,11 @@ app.views.SkillView = Backbone.View.extend({
     'change .edit-skill': 'updateSkill'
   },
 
+  initialize: function() {
+    this.listenTo(this.model, 'change', this.saveModel);
+    this.listenTo(this.model, 'change', this.render);
+  },
+
   render: function() {
     this.$el.html(this.template(this.model.attributes));
 
@@ -29,6 +34,9 @@ app.views.SkillView = Backbone.View.extend({
 
   updateSkill: function(event) {
     this.model.set('skill',event.currentTarget.value);
+  },
+
+  saveModel: function() {
     this.model.collection.project.save();
   }
 

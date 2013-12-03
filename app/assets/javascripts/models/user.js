@@ -5,6 +5,8 @@ app.models.User = Backbone.Model.extend({
   initialize: function() {
     this.projects = new app.collections.ProjectList();
     this.projects.user = this;
+    this.followers = new app.collections.FollowerList();
+    this.followers.url = 'http://localhost:9292/users/' + this.id + '/followers';
     this.bind("sync", this.gotSync);
     this.bind("change:firstName change:lastName", this.gotChange);
   },
@@ -22,6 +24,14 @@ app.models.User = Backbone.Model.extend({
           _this.projects.user = _this;
           return _this.projects;
         }
+      }
+    });
+    this.followers.fetch({
+      success: function(followers) {
+        console.log("fetching followers... success");
+      },
+      error: function(collection, response, options) {
+        console.log("fetching followers... failure");
       }
     });
   },

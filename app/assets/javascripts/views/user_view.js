@@ -12,7 +12,8 @@ app.views.UserView = Backbone.View.extend({
     'click h2.bio' : 'editBio',
     'change #edit-user-bio' : 'updateBio',
     'click h3.mission' : 'editMission',
-    'change #edit-user-mission' : 'updateMission'
+    'change #edit-user-mission' : 'updateMission',
+    'click #follow' : 'followUser'
   },
 
   initialize: function() {
@@ -82,6 +83,21 @@ app.views.UserView = Backbone.View.extend({
 
   parse: function(response) {
     console.log("user_view parse");
+  },
+
+  followUser: function() {
+    var follow = new app.models.Follow();
+    var currentUser = 1000;
+    var followUser = this.model.get('id');
+    follow.url = 'http://localhost:9292/users/' + followUser + '/follows/' +  currentUser;
+    follow.save({
+      success:function() {
+        console.log('success');
+      },
+      error: function() {
+        console.log('error');
+      }
+    });
   }
 
 });

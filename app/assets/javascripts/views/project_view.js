@@ -11,6 +11,10 @@ app.views.ProjectView = Backbone.View.extend({
     'change .edit-url': 'updateURL'
   },
 
+  initialize: function() {
+    this.listenTo(this.model, 'change', this.render);
+  },
+
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
     var skillListView = new app.views.SkillListView({
@@ -52,6 +56,5 @@ app.views.ProjectView = Backbone.View.extend({
   updateURL: function() {
     this.model.set('url',this.$('.edit-url').val());
     this.model.save();
-    this.render();
   }
 });

@@ -7,14 +7,14 @@
 
           <div class="project-details">
             <h3 class="project-name">
-              <%= title %>
+              <%= project.title %>
             </h3>
 
             <input class="edit-title hidden-edit" placeholder="Enter a title">
 
             <div class="project-url">
-              <a href="<%= url %>">
-                <%= url %>
+              <a href="<%= project.url %>">
+                <%= project.url %>
               </a>
             </div>
             <input class="edit-url hidden-edit" placeholder="Enter a url">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="body">
-              <%= body %>
+              <%= project.body %>
             </div>
           </div>
         </div>

@@ -41,7 +41,10 @@ app.models.Project = Backbone.Model.extend({
   },
 
   toJSON: function() {
-    return this.attributes;
+    // this cost me an hour!
+    // this.attributes.skills_attributes = this.attributes.skills;
+    this.attributes.skills_attributes = this.skills;
+    return { project: this.attributes };
   }
 
 });

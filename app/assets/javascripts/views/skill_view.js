@@ -5,7 +5,9 @@ app.views.SkillView = Backbone.View.extend({
   template: JST['templates/skill'],
 
   events: {
-    'click .delete': 'removeSkill'
+    'click .delete': 'removeSkill',
+    'click .name': 'editSkill',
+    'change .edit-skill': 'updateSkill'
   },
 
   render: function() {
@@ -17,6 +19,17 @@ app.views.SkillView = Backbone.View.extend({
   removeSkill: function() {
     this.model.collection.remove(this.model);
     this.model.destroy();
+  },
+
+  editSkill: function(event) {
+    event.currentTarget.hidden = true;
+    $(event.currentTarget.parentNode).find('.hidden-edit').
+      removeClass('hidden-edit').focus();
+  },
+
+  updateSkill: function(event) {
+    this.model.set('skill',event.currentTarget.value);
+    this.model.collection.project.save();
   }
 
 });

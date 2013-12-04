@@ -40,7 +40,9 @@ app.Router = Backbone.Router.extend({
           model: me
         });
 
-        // add followerListView here
+        var followerListView = new app.views.UserListView({
+          collection: me.followers
+        });
 
         var projectListView = new app.views.ProjectListView({
           collection: me.projects
@@ -49,6 +51,7 @@ app.Router = Backbone.Router.extend({
         // me.save();
 
         $('#content').html(userView.render().el);
+        $('#content').append(followerListView.render().el);
         $('#content').append(projectListView.render().el);
         $('#content').append("<div class='clear'></div>");
 

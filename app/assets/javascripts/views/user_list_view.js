@@ -8,6 +8,10 @@ app.views.UserListView = Backbone.View.extend({
     'click .user-show': 'showUser'
   },
 
+  initialize: function() {
+    this.listenTo(this.collection, 'reset', this.render);
+  },
+
   render: function() {
 
     this.$el.html(this.template({

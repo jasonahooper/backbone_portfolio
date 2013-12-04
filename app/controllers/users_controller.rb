@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
+  def likes
+    oauth_access_token = User.find(params[:id]).facebook_access_token
+    @graph = Koala::Facebook::API.new(oauth_access_token)
+    render :json => @graph.get_connections('me','likes')
+  end
+
   private
 
   def facebook_oauth_client
@@ -48,7 +54,6 @@ class UsersController < ApplicationController
       :site => 'https://graph.facebook.com',
       :token_url => '/oauth/access_token'
     )
-
   end
 
   def user_params

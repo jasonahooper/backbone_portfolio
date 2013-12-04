@@ -7,6 +7,8 @@ app.models.User = Backbone.Model.extend({
     this.projects.user = this;
     this.followers = new app.collections.UserList();
     this.followers.url = 'http://localhost:9292/users/' + this.id + '/followers';
+    this.likes = new app.collections.LikeList();
+    this.likes.url = 'users/' + this.id + '/likes';
     this.bind("sync", this.gotSync);
     this.bind("change:firstName change:lastName", this.gotChange);
   },
@@ -31,6 +33,13 @@ app.models.User = Backbone.Model.extend({
       success: function(followers) {
         _this.followers.reset(followers.models);
         return _this.followers;
+      }
+    });
+    _this = this;
+    this.likes.fetch({
+      success: function(likes) {
+        _this.likes.reset(likes.models);
+        return _this.likes;
       }
     });
   },

@@ -4,6 +4,7 @@ BackbonePortfolio::Application.routes.draw do
   resources :skills
 get '/login_with_facebook', :to => 'users#authorise_facebook', :as => :login_with_facebook
 get '/facebook_oauth_callback', :to => 'users#facebook_oauth_callback', :as => :facebook_oauth_callback
+get '/users/:id/likes', :to => 'users#likes', :as => :user_likes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -40,6 +40,8 @@ app.Router = Backbone.Router.extend({
           model: me
         });
 
+        // add followerListView here
+
         var projectListView = new app.views.ProjectListView({
           collection: me.projects
         });

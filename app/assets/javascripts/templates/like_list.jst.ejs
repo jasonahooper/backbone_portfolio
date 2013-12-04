@@ -1,0 +1,8 @@
+<h2>Facebook Like List</h2>
+<ul>
+  <% _(collection.models).each(function(like) { %>
+    <li>
+      <%= like.get("category")%>
+    </li>
+  <% }) %>
+</ul>

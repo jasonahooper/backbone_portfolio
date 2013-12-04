@@ -8,10 +8,6 @@ app.models.Project = Backbone.Model.extend({
     this.skills.project = this;
   },
 
-  // updateTitle: function() {
-  //   this.attributes.title += " Changed";
-  // },
-
   validate: function() {
     if(this.attributes.url === "") {
       return "Argh!";
@@ -41,8 +37,6 @@ app.models.Project = Backbone.Model.extend({
   },
 
   toJSON: function() {
-    // this cost me an hour!
-    // this.attributes.skills_attributes = this.attributes.skills;
     this.attributes.skills_attributes = this.skills;
     return { project: this.attributes };
   }

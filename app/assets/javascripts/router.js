@@ -21,7 +21,7 @@ app.Router = Backbone.Router.extend({
   },
 
   showUser: function(id) {
-    me = new app.models.User({id : id});
+    var me = new app.models.User({id : id});
     me.fetch({
       success: function(me) {
         // if (me.values().length === 0) {
@@ -48,12 +48,21 @@ app.Router = Backbone.Router.extend({
           collection: me.projects
         });
 
+
         // me.save();
 
         $('#content').html(userView.render().el);
         $('#content').append("<h2>Follower List</h2>");
         $('#content').append(followerListView.render().el);
         $('#content').append(projectListView.render().el);
+
+        if (me.get("facebook_access_token")) {
+          var likeListView = new app.views.LikeListView({
+            collection: me.likes
+          });
+          $('#content').append(likeListView.render().el);
+        }
+
         $('#content').append("<div class='clear'></div>");
 
       }

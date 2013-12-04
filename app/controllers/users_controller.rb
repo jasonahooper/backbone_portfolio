@@ -21,8 +21,20 @@ class UsersController < ApplicationController
       :redirect_uri => facebook_oauth_callback_url, :scope => permissions.join(','))
   end
 
+  def authorise_github
+    redirect_to github_oauth_client.auth_code.authorize_url
+  end
+
+  def github_oauth_callback
+    access_token = github_oauth_client.auth_code.get_token(params[:code],
+      :parse => :query)
+    binding.pry
+    redirect_to '/'
+  end
+
   def facebook_oauth_callback
-    access_token = facebook_oauth_client.auth_code.get_token(params[:code], :redirect_uri => facebook_oauth_callback_url, :parse => :query)
+    access_token = facebook_oauth_client.auth_code.get_token(params[:code],
+      :redirect_uri => facebook_oauth_callback_url, :parse => :query)
     picture = access_token.get('me/picture')
 
     facebook_user = JSON(access_token.get('/me').body).symbolize_keys
@@ -53,6 +65,16 @@ class UsersController < ApplicationController
       BackbonePortfolio::Application.config.facebook_secret,
       :site => 'https://graph.facebook.com',
       :token_url => '/oauth/access_token'
+    )
+  end
+
+  def github_oauth_client
+    @github_oauth_client ||= OAuth2::Client.new(
+      BackbonePortfolio::Application.config.github_client_id,
+      BackbonePortfolio::Application.config.github_client_secret,
+      :site => 'https://github.com',
+      :authorize_url => 'login/oauth/authorize',
+      :token_url => '/login/oauth/access_token'
     )
   end
 

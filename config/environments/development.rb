@@ -29,4 +29,7 @@ BackbonePortfolio::Application.configure do
 
   config.facebook_app_id = "461471097290154"
   config.facebook_secret = "dbd0dbeda18000b5efcd5a64702bb507"
+
+  config.github_client_id = "6698638d20aeba2f576e"
+  config.github_client_secret = "bced7f478ca3d349380fd9e1c608b5cfaef6783d"
 end

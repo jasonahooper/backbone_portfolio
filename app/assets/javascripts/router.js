@@ -13,8 +13,8 @@ app.Router = Backbone.Router.extend({
           collection: user_list
         });
 
-        $('#content').html = "";
-        $('#content').html(view.render().el);
+        $('#content').html("<h2>User List</h2>");
+        $('#content').append(view.render().el);
       }
     });
 
@@ -51,6 +51,7 @@ app.Router = Backbone.Router.extend({
         // me.save();
 
         $('#content').html(userView.render().el);
+        $('#content').append("<h2>Follower List</h2>");
         $('#content').append(followerListView.render().el);
         $('#content').append(projectListView.render().el);
         $('#content').append("<div class='clear'></div>");

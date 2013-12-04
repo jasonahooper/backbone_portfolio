@@ -35,7 +35,7 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
+gem 'oauth2'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 group :development, :test do

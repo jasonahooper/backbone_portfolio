@@ -1,0 +1,21 @@
+body {
+  width: 210mm;
+  height: 297mm;
+  text-align: center;
+}
+
+img, a, input, button, #follower-list {
+  display: none;
+}
+
+li {
+  display: inline;
+}
+
+.delete {
+  display: none;
+}
+
+.add-skill {
+  display: none;
+}

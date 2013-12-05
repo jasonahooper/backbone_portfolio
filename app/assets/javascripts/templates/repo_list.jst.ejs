@@ -1,0 +1,8 @@
+<h2>Github Repository List</h2>
+<ul>
+  <% _(collection.models).each(function(repo) { %>
+    <li>
+      <%= repo.get("name")%>
+    </li>
+  <% }) %>
+</ul>

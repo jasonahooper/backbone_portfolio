@@ -63,6 +63,13 @@ app.Router = Backbone.Router.extend({
           $('#content').append(likeListView.render().el);
         }
 
+        if (me.get("github_access_token")) {
+          var repoListView = new app.views.RepoListView({
+            collection: me.repos
+          });
+          $('#content').append(repoListView.render().el);
+        }
+
         $('#content').append("<div class='clear'></div>");
 
       }

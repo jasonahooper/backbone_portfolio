@@ -28,16 +28,27 @@ class UsersController < ApplicationController
   def github_oauth_callback
     access_token = github_oauth_client.auth_code.get_token(params[:code],
       :parse => :query)
-    binding.pry
+    token = access_token.token
+    client = Octokit::Client.new :access_token => token
+
+    @user = User.find_or_create_by_github_id!(client.user.id,
+      :github_access_token => token,
+      :first_name => client.user.id,
+      :last_name => client.login
+    )
+
+    flash[:notice] = "Successfully logged in!"
+    session[:user_id] = @user.id
     redirect_to '/'
   end
 
   def facebook_oauth_callback
     access_token = facebook_oauth_client.auth_code.get_token(params[:code],
       :redirect_uri => facebook_oauth_callback_url, :parse => :query)
-    picture = access_token.get('me/picture')
 
+    picture = access_token.get('me/picture')
     facebook_user = JSON(access_token.get('/me').body).symbolize_keys
+
     @user = User.find_or_create_by_facebook_id!(facebook_user[:id],
       :facebook_access_token => access_token.token,
       :first_name => facebook_user[:first_name],

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204154457) do
+ActiveRecord::Schema.define(version: 20131205000543) do
 
   create_table "projects", force: true do |t|
     t.string   "url"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20131204154457) do
     t.datetime "updated_at"
     t.string   "facebook_id"
     t.string   "facebook_access_token"
+    t.integer  "github_id"
+    t.string   "github_access_token"
   end
 
 end

@@ -37,6 +37,7 @@ end
 # gem 'capistrano', group: :development
 gem 'oauth2'
 gem "koala", "~> 1.8.0rc1"
+gem "octokit", "~> 2.0"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

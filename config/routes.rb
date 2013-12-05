@@ -5,6 +5,7 @@ BackbonePortfolio::Application.routes.draw do
 get '/login_with_facebook', :to => 'users#authorise_facebook', :as => :login_with_facebook
 get '/facebook_oauth_callback', :to => 'users#facebook_oauth_callback', :as => :facebook_oauth_callback
 get '/users/:id/likes', :to => 'users#likes', :as => :user_likes
+get '/users/:id/repos', :to => 'users#repos', :as => :user_repos
 get '/login_with_github', :to => 'users#authorise_github', :as => :login_with_github
 get '/github_oauth_callback', :to => 'users#github_oauth_callback', :as => :github_oauth_callback
   # The priority is based upon order of creation: first created -> highest priority.

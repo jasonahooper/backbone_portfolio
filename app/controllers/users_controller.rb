@@ -68,6 +68,13 @@ class UsersController < ApplicationController
     render :json => @graph.get_connections('me','likes')
   end
 
+  def repos
+    token = User.find(params[:id]).github_access_token
+    client = Octokit::Client.new :access_token => token
+    repos = client.repos
+    render :json => repos.map { |m| { 'name' => m.name } }
+  end
+
   private
 
   def facebook_oauth_client

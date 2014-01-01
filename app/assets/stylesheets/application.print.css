@@ -1,21 +1,23 @@
-body {
-  width: 210mm;
-  height: 297mm;
-  text-align: center;
-}
+@media print {
+  body {
+    width: 210mm;
+    height: 297mm;
+    text-align: center;
+  }
 
-img, a, input, button, #follower-list {
-  display: none;
-}
+  img, a, input, button, #follower-list {
+    display: none;
+  }
 
-li {
-  display: inline;
-}
+  li {
+    display: inline;
+  }
 
-.delete {
-  display: none;
-}
+  .delete {
+    display: none;
+  }
 
-.add-skill {
-  display: none;
+  .add-skill {
+    display: none;
+  }
 }

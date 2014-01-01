@@ -3,28 +3,28 @@ html, body {
   padding: 0;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
   background: #99CCFF;
-  background-image: linear-gradient(top, #99CCFF 0%, #6699CC 400px);
-  background-image: -o-linear-gradient(top, #99CCFF 0%, #6699CC 400px);
-  background-image: -moz-linear-gradient(top, #99CCFF 0%, #6699CC 400px);
-  background-image: -webkit-linear-gradient(top, #99CCFF 0%, #6699CC 400px);
-  background-image: -ms-linear-gradient(top, #99CCFF 0%, #6699CC 400px);
+  background-image: linear-gradient(top, #99CCFF 0%, #6699CC 30em);
+  background-image: -o-linear-gradient(top, #99CCFF 0%, #6699CC 30em);
+  background-image: -moz-linear-gradient(top, #99CCFF 0%, #6699CC 30em);
+  background-image: -webkit-linear-gradient(top, #99CCFF 0%, #6699CC 30em);
+  background-image: -ms-linear-gradient(top, #99CCFF 0%, #6699CC 30em);
   background-attachment: fixed;
   color : #313131;
   height: 100%;
 }
 
 body {
-  padding: 20px;
+  padding: 1.25em;
 }
 
 #content {
-  width: 900px;
+  width: 60em;
   background: white;
-  padding: 20px;
-  border-radius: 6px;
+  padding: 1.25em;
+  border-radius: .25em;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 2px 2px 14px #6699CC;
+  box-shadow: .1em .1em 1em #6699CC;
 }
 
 h1,h2,h3,h4,h5 {
@@ -34,7 +34,7 @@ h1,h2,h3,h4,h5 {
 h1.name {
   /*font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;*/
   font-size: 4em;
-  text-shadow: 2px 1px 1px #999;
+  text-shadow: .1em .05em .05em #999;
   margin-bottom: 0.25em;
 }
 
@@ -51,8 +51,8 @@ ul {
 }
 
 #bio {
-  height: 200px;
-  padding-bottom: 20px;
+  height: 12.5em;
+  padding-bottom: 1.25em;
 }
 
 .bio-image {
@@ -60,45 +60,45 @@ ul {
 }
 
 .bio-text {
-  margin-left: 220px;
+  margin-left: 14em;
   position: relative;
-  top: -12px;
+  top: -.75em;
 }
 
 .shadowed {
-  border-radius: 6px;
-  box-shadow: 1px 2px 6px #999999;
+  border-radius: .4em;
+  box-shadow: .05em .1em .2em #999999;
 }
 
 #projects {
-  margin-top: 50px;
+  margin-top: 3em;
   clear: left;
 }
 
 .project, .new-project {
-  padding-top: 20px;
+  padding-top: 1.25em;
   clear: left;
 }
 
 .sortable {
   background-image: image_url('sort-arrows.png');
-  width: 20px;
-  height: 35px;
+  width: 1.25em;
+  height: 2.2em;
   cursor: move;
   float:left;
   position: relative;
-  top: 60px;
+  top: 3.5em;
 }
 
 .info {
-  margin-left: 20px;
-  width: 820px;
+  margin-left: 1.25em;
+  width: 50em;
   float: left;
 }
 
 .project-image {
   float: left;
-  margin-right: 20px;
+  margin-right: 1.25em;
 }
 
 .project-details {
@@ -106,8 +106,8 @@ ul {
 }
 
 .skills {
-  font-size: 12px;
-  height: 60px;
+  font-size: 1em;
+  height: 3.5em;
 }
 
 ul.skill-list li {
@@ -117,31 +117,31 @@ ul.skill-list li {
 .skill {
   display: inline-block;
   position: relative;
-  top: 2px;
+  top: .1em;
   float: left;
-  margin-bottom: 4px;
-  margin-right: 6px;
+  margin-bottom: .25em;
+  margin-right: .4em;
   background-color: white;
-  height: 18px;
-  border-radius: 14px;
-  border: 1px #DFCBDB solid;
-  padding: 5px 4px 1px 11px;
+  height: 1.1em;
+  border-radius: .9em;
+  border: .1em #DFCBDB solid;
+  padding: .3em .25em .1em .75em;
 }
 
 .body {
-  margin-left: 370px;
+  margin-left: 23em;
 }
 
 .body ul {
   list-style-type: square;
-  padding-left: 20px;
+  padding-left: 1.5em;
 
 }
 
 .skill-label {
   float: left;
-  line-height: 30px;
-  margin-right: 10px;
+  line-height: 2em;
+  margin-right: .75em;
   font-weight: bold;
 }
 
@@ -151,33 +151,33 @@ ul.skill-list li {
 
 .skill .delete {
   display: inline-block;
-  text-indent: -9999px;
-  background: transparent image_url('remove-button.png') no-repeat 0px 0px;
-  width: 17px;
-  height: 17px;
+  text-indent: -9999em;
+  background: transparent image_url('remove-button.png') no-repeat 0 0;
+  width: 1em;
+  height: 1em;
   cursor:pointer;
-  margin-left: 8px;
+  margin-left: .3em;
   position: relative;
-  top: -1px;
+  top: -.05em;
   float:right;
 }
 
 .add-skill {
   background: transparent image_url('add-button.png');
-  text-indent: -9999px;
+  text-indent: -9999em;
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 2em;
+  height: 2em;
   cursor: pointer;
 }
 
 .remove-project {
-  width: 27px;
-  height: 27px;
-  text-indent: -9999px;
+  width: 1.5em;
+  height: 1.5em;
+  text-indent: -9999em;
   background: transparent image_url('delete-icons.png') no-repeat;
   cursor: pointer;
-  margin-left: 870px;
+  margin-left: 52em;
 }
 
 .hidden-edit {
@@ -186,4 +186,14 @@ ul.skill-list li {
 
 .clear {
   clear: both;
+}
+
+.like-list {
+  float:left;
+  margin-top: 1em;
+}
+
+.repo-list {
+  float: left;
+  margin-top: 1em;
 }

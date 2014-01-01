@@ -52,10 +52,10 @@ app.Router = Backbone.Router.extend({
         // me.save();
 
         $('#content').html(userView.render().el);
-        $('#content').append('<div id="follower-list">').
-          append("<h2>Follower List</h2>").
-          append(followerListView.render().el).
-          append('</div>');
+        var follower = '<div id="follower-list">';
+        $('#content').append(follower + "<h2>Follower List</h2>");
+        $('#content').append(followerListView.render().el);
+        $('#content').append('</div>');
         $('#content').append(projectListView.render().el);
 
         if (me.get("facebook_access_token")) {
